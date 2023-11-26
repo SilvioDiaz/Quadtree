@@ -8,12 +8,23 @@
 <body>
     <input id="widthScreen" label="Width Screen" value="400"></input>
     <input id="heightScreen" label="Height Screen" value="400"></input>
-    <input id="pointsInput" placeholder="Numero de Pontos" value="500"></input>
+    <input id="pointsInput" placeholder="Add Particles" value="50"></input>
+
+    <div>
+        <input type="checkbox" id="havePlayer" name="havePlayer"/>
+        <label id="havePlayer" for="havePlayer">have player</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="haveCheckArea" name="haveCheckArea"/>
+        <label id="haveCheckArea" for="haveCheckArea">Create Check Area</label>
+    </div>
+
     <div> 
         <h2>Informações</h2>
         <div id="informations">
     </div>
-    <button onclick="randomGeneratePoints()">Gerar</button>
+    <button onclick="generateBoard()">Add Particles</button>
 
     <script src="p5.js"></script>
     <script src="sketch.js"></script>

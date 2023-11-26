@@ -41,7 +41,6 @@
 
   }
 
-
   class Rectangle {
     constructor(x,y,w,h){
         this.x = x;
@@ -122,7 +121,6 @@
         return;
       }else{
         for(let p of this.points){
-          count++
           if(range.contains(p)) found.push(p);
         }
       }
