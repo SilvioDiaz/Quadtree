@@ -1,10 +1,46 @@
   class Point {
-    constructor(x,y){
+    constructor(x,y,userData){
       this.x = x;
       this.y = y;
+      this.userData = userData
     }
 
   }
+
+  class Circle{
+    constructor(x,y,r){
+      this.x = x;
+      this.y = y;
+      this.r = r;
+      this.rSquared = this.r * this.r;
+    }
+
+    contains(point){
+      let d = Math.pow((point.x - this.x), 2) + Math.pow((point.y - this.y),2);
+      return d <= this.rSquared;
+    }
+
+    intersects(range){
+      const xDist = Math.abs(range.x = this.x);
+      const yDist = Math.abs(range.y = this.y);
+
+      let r = this.r;
+
+      let w = range.w / 2;
+      let h = range.h / 2;
+
+      let edges = Math.pow((xDist - w),2) + Math.pow((yDist - h), 2);
+
+      if(xDist > (r+w) || yDist > (r + h)) return false;
+
+      if(xDist <= w || yDist <= h) return true;
+
+      return edges <= this.rSquared;
+
+    }
+
+  }
+
 
   class Rectangle {
     constructor(x,y,w,h){
@@ -13,6 +49,7 @@
         this.w = w,
         this.h = h;
     }
+
 
   contains(point){
     return (point.x >= this.x - this.w &&
@@ -96,7 +133,6 @@
         this.southeast.query(range,found);
         this.southwest.query(range,found);
       }
-      console.log("rangeLength",found.length);
       return found;
     }
 
