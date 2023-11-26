@@ -136,25 +136,4 @@
       return found;
     }
 
-    show(){
-      stroke(255);
-      strokeWeight(1);
-      noFill();
-      rectMode(CENTER);
-      rect(this.boundary.x,this.boundary.y,this.boundary.w*2,this.boundary.h*2);
-      
-      if(this.divided){
-        this.northwest.show();
-        this.northeast.show();
-        this.southeast.show();
-        this.southwest.show();
-      }
-
-      for(let p of this.points){
-        strokeWeight(4);
-        point(p.x,p.y);
-      }
-
-
-    }
   }

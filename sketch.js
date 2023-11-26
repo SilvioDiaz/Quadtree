@@ -164,6 +164,28 @@ function draw(){
     // }
   }
 
-  qtree.show();
+  show(qtree);
+
+}
+
+function show(qtree){
+  stroke(255);
+  strokeWeight(1);
+  noFill();
+  rectMode(CENTER);
+  rect(qtree.boundary.x,qtree.boundary.y,qtree.boundary.w*2,qtree.boundary.h*2);
+  
+  if(qtree.divided){
+    show(qtree.northwest);
+    show(qtree.northeast);
+    show(qtree.southeast);
+    show(qtree.southwest);
+  }
+
+  for(let p of qtree.points){
+    strokeWeight(4);
+    point(p.x,p.y);
+  }
+
 
 }
