@@ -1,5 +1,5 @@
   class Point {
-    constructor(x,y,userData){
+    constructor(x,y,userData,isPlayer){
       this.x = x;
       this.y = y;
       this.userData = userData
@@ -142,6 +142,7 @@
       noFill();
       rectMode(CENTER);
       rect(this.boundary.x,this.boundary.y,this.boundary.w*2,this.boundary.h*2);
+      
       if(this.divided){
         this.northwest.show();
         this.northeast.show();

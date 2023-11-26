@@ -1,9 +1,10 @@
 class Particle {
-    constructor(x,y){
+    constructor(x,y,isPlayer){
         this.x = x;
         this.y = y;
         this.r = 8;
         this.highlight = false;
+        this.isPlayer = isPlayer 
     }
 
     intersects(other){
@@ -15,16 +16,23 @@ class Particle {
         this.highlight = value;
     }
 
-    move(){
-        this.x += random(-1,1);
-        this.y += random(-1,1);
+    move(x,y){
+        if(!x && !y){
+            this.x += random(-1,1);
+            this.y += random(-1,1);
+        }else{
+            this.x = x;
+            this.y = y;
+        }
     }
 
     render(){
         noStroke();
 
         if(this.highlight) fill(255);
-        else fill(100);
+        else fill(255, 204, 0);
+
+        if(this.isPlayer) fill('red')
 
         ellipse(this.x,this.y,this.r * 2); 
     }

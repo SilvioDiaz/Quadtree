@@ -119,11 +119,12 @@ let particles = [];
 
 
 function setup(){
-  createCanvas(600,400)
+  createCanvas(1000,1000)
 
 
-  for(let i = 0; i < 10; i++){
-    particles[i] = new Particle(random(width),random(height));
+  for(let i = 0; i < 900; i++){
+    const isPlayer = i === 5;
+    particles[i] = new Particle(random(width),random(height),isPlayer);
   }
 
  }
@@ -131,13 +132,16 @@ function setup(){
 function draw(){
   background(0);
 
-  const qtree = createQuadTree(600,400);
+  const qtree = createQuadTree(1000,1000);
 
   for(let p of particles){
     let point = new Point(p.x,p.y,p);
     qtree.insert(point);
 
-    p.move();
+    if(p.isPlayer){
+      p.move(mouseX,mouseY);
+    } else p.move();
+
     p.render();
     p.setHighlight(false);
   }
@@ -159,5 +163,7 @@ function draw(){
     //   }
     // }
   }
+
+  qtree.show();
 
 }
